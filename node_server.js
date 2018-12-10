@@ -4,18 +4,18 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 var app = express();
-
+port = process.env.PORT || 80
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
-var port = process.env.PORT || 8080;
+
 var server = app.listen(port);
 //fs.readFile('./index.html', function (err, html) {
 //    if (err) {
