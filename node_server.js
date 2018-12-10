@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const express = require('express');
 var app = express();
-port = process.env.PORT || 5000;
+port = process.env.PORT;
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
