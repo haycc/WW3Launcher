@@ -10,6 +10,14 @@ function connecttoserver(ip) {
   window.location.href = "steam://connect/" + String(ip);
 };
 
+var showempty = false;
+
+function changeservers(){
+  showempty ^= true;
+  $("tbody").empty();
+  filltable();
+}
+
 function filltable(){
   servers.sort(sortByProperty('players'));
   for (var i = 0; i < servers.length; i++) {
@@ -22,6 +30,9 @@ function filltable(){
       if (currentserver["players"] > 0){
         serverip2 = "'" + String(serverip) + "'";
         $("tbody").append('<tr><td>' + serverip + '</td><td>' + servername + '</td><td>' + servermap + '</td><td>' + serverplayers + '</td><td><button class="btn btn-primary" onclick="connecttoserver('+ serverip2 +')">Connect</button></td></tr>');
-    };
+    } else if (showempty){
+      serverip2 = "'" + String(serverip) + "'";
+      $("tbody").append('<tr><td>' + serverip + '</td><td>' + servername + '</td><td>' + servermap + '</td><td>' + serverplayers + '</td><td><button class="btn btn-primary" onclick="connecttoserver('+ serverip2 +')">Connect</button></td></tr>');
+    }
   };
 };
