@@ -34,7 +34,6 @@ function updateserverlist(){
       if(err) {
           console.log(err);
       }
-      console.log("SERVER LIST UPDATED");
     });
   });
 };
