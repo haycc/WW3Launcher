@@ -6,6 +6,8 @@ const express = require('express');
 var app = express();
 const port = process.env.PORT;
 
+const SteamAPIKey = process.env.steamkey;
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
@@ -15,18 +17,8 @@ app.get('/', function(req, res) {
 app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
-//fs.readFile('./index.html', function (err, html) {
-//    if (err) {
-//        console.log(err);
-//    };
-//    http.createServer(function(request, response) {
-//      response.writeHeader(200, {"Content-Type": "text/html"});
-//      response.write(html);
-//      response.end();
-//    }).listen(8000);
-//});
 
-var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=API_KEY_HERE&filter=\\appid\\674020&limit=1000';
+var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=' + SteamAPIKey + 'filter=\\appid\\674020&limit=1000';
 
 function updateserverlist(){
   request.get(url, function (error, response, body) {
