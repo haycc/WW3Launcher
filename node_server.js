@@ -26,7 +26,7 @@ app.listen(port, function(){
 //    }).listen(8000);
 //});
 
-var url = 'API_KEY_HERE';
+var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=API_KEY_HERE&filter=\\appid\\674020&limit=1000';
 
 function updateserverlist(){
   request.get(url, function (error, response, body) {
