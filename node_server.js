@@ -8,6 +8,10 @@ const port = process.env.PORT;
 
 const SteamAPIKey = process.env.steamkey;
 
+//testing
+console.Log(process.env.steamkey);
+console.Log(SteamAPIKey);
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
@@ -19,7 +23,7 @@ app.listen(port, function(){
 });
 
 var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=' + SteamAPIKey + 'filter=\\appid\\674020&limit=1000';
-
+console.Log(url);
 function updateserverlist(){
   request.get(url, function (error, response, body) {
     fs.writeFile("public/servers.js", "var serverlist = [" + body + "]", function(err) {
