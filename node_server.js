@@ -9,7 +9,6 @@ const port = process.env.PORT;
 const SteamAPIKey = process.env.steamkey;
 
 //testing
-console.log(process.env.steamkey);
 console.log(SteamAPIKey);
 
 app.use(express.static('public'));
@@ -22,8 +21,7 @@ app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
-var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=' + SteamAPIKey + 'filter=\\appid\\674020&limit=1000';
-console.log(url);
+var url = 'https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=' + SteamAPIKey + '&filter=\\appid\\674020&limit=1000';
 
 function updateserverlist(){
   request.get(url, function (error, response, body) {
